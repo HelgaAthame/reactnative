@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from "react-native";
+import { Header } from "@/components/Header";
+import { List } from "@/components/List";
+import { useState } from "react";
+import { AddTask } from "@/components/AddTask";
 
 export default function App() {
+  const [list, setList] = useState<Task[]>([]);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.app}>
+      <Header />
+      <List list={list} />
+      <AddTask
+        add={(val) => {
+          const task = {
+            id: list.length,
+            text: val,
+          };
+          setList([...list, task]);
+        }}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  app: {
+    width: "100%",
   },
 });
