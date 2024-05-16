@@ -18,7 +18,7 @@ export function AddTask({ add }: Props) {
       <Button
         title={"ADD"}
         onPress={() => {
-          add(text);
+          if (text.trim() !== "") add(text);
           clear();
         }}
       />

@@ -16,9 +16,12 @@ export function List({ list }: Props) {
       <FlatList
         data={list}
         renderItem={({ item }) => (
-          <TouchableHighlight>
+          <TouchableHighlight style={styles.wrapper}>
             <Text style={styles.text}>{item.text}</Text>
           </TouchableHighlight>
+        )}
+        ItemSeparatorComponent={() => (
+          <View style={{ height: 10, backgroundColor: "transparent" }} />
         )}
       />
     </View>
@@ -31,8 +34,17 @@ const styles = StyleSheet.create({
     width: "100%",
     gap: 10,
   },
+  wrapper: {
+    backgroundColor: "showwhite",
+    padding: 5,
+    borderRadius: 5,
+    borderColor: "gray",
+    borderWidth: 1,
+    borderStyle: "solid",
+  },
   text: {
     fontSize: 16,
-    color: "darkblue",
+    color: "darkslateblue",
+    fontWeight: "bold",
   },
 });
