@@ -8,15 +8,19 @@ import {
 
 interface Props {
   list: Task[];
+  deleteHandler: (id: number) => void;
 }
 
-export function List({ list }: Props) {
+export function List({ list, deleteHandler }: Props) {
   return (
     <View style={styles.main}>
       <FlatList
         data={list}
         renderItem={({ item }) => (
-          <TouchableHighlight style={styles.wrapper}>
+          <TouchableHighlight
+            style={styles.wrapper}
+            onPress={() => deleteHandler(item.id)}
+          >
             <Text style={styles.text}>{item.text}</Text>
           </TouchableHighlight>
         )}

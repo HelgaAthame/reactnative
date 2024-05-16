@@ -6,10 +6,17 @@ import { AddTask } from "@/components/AddTask";
 
 export default function App() {
   const [list, setList] = useState<Task[]>([]);
+
+  const deleteHandler = (id: number) => {
+    const newList = list.slice(0);
+    newList.splice(id, 1);
+    setList(newList);
+  };
+
   return (
     <View style={styles.app}>
       <Header />
-      <List list={list} />
+      <List list={list} deleteHandler={deleteHandler} />
       <AddTask
         add={(val) => {
           const task = {

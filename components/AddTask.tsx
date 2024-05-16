@@ -14,9 +14,11 @@ export function AddTask({ add }: Props) {
         onChangeText={onChangeText}
         value={text}
         style={styles.input}
+        placeholder="New Task ..."
       />
       <Button
         title={"ADD"}
+        color="green"
         onPress={() => {
           if (text.trim() !== "") add(text);
           clear();
@@ -35,11 +37,9 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   input: {
-    backgroundColor: "azure",
     padding: 5,
-    borderRadius: 5,
     borderColor: "gray",
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderStyle: "solid",
   },
 });
