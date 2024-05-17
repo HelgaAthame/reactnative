@@ -8,9 +8,7 @@ export default function App() {
   const [list, setList] = useState<Task[]>([]);
 
   const deleteHandler = (id: number) => {
-    const newList = list.slice(0);
-    newList.splice(id, 1);
-    setList(newList);
+    setList(list.filter((item) => item.id !== id));
   };
 
   return (

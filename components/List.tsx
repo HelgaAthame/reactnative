@@ -4,6 +4,7 @@ import {
   Text,
   FlatList,
   TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 
 interface Props {
@@ -17,12 +18,12 @@ export function List({ list, deleteHandler }: Props) {
       <FlatList
         data={list}
         renderItem={({ item }) => (
-          <TouchableHighlight
+          <TouchableOpacity
             style={styles.wrapper}
             onPress={() => deleteHandler(item.id)}
           >
             <Text style={styles.text}>{item.text}</Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         )}
         ItemSeparatorComponent={() => (
           <View style={{ height: 10, backgroundColor: "transparent" }} />
